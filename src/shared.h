@@ -8,7 +8,7 @@
 #include <pthread.h>
 
 #include <curl/curl.h>
-#include "mpv/client.h"
+#include "libmpv/client.h"
 
 
 ////////// CODE MACROS //////////
