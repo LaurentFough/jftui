@@ -1,5 +1,7 @@
 OFLAGS=-O2 -march=native
 WFLAGS=-Wall -Wpedantic -Wextra -Wconversion -Wstrict-prototypes -Werror=implicit-function-declaration -Werror=implicit-int -Werror=incompatible-pointer-types -Werror=int-conversion
+# Without this the configure line will(!) fail
+export PKG_CONFIG=pkg-config
 CFLAGS=`pkg-config --cflags libcurl yajl mpv`
 LFLAGS=`pkg-config --libs libcurl yajl mpv` -pthread
 DFLAGS=-g -O1 -fno-omit-frame-pointer -fno-optimize-sibling-calls -fsanitize=address -fsanitize=undefined -DJF_DEBUG
@@ -22,10 +24,10 @@ all: ${BUILD_DIR}/jftui
 debug: ${BUILD_DIR}/jftui_debug
 
 install: all
-	install -Dm555 ${BUILD_DIR}/jftui $(DESTDIR)/usr/bin/jftui
+	install -Dm555 ${BUILD_DIR}/jftui $(DESTDIR)/usr/local/bin/jftui
 
 uninstall:
-	rm $(DESTDIR)/usr/bin/jftui
+	rm $(DESTDIR)/usr/local/bin/jftui
 
 clean:
 	rm -rf ${BUILD_DIR} runtime

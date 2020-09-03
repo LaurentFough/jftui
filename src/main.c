@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <locale.h>
 #include <assert.h>
-#include <mpv/client.h>
+#include "mpv/client.h"
 #include <yajl/yajl_version.h>
 
 
@@ -222,7 +222,7 @@ static inline void jf_mpv_event_dispatch(const mpv_event *event)
 
 
 ////////// MAIN LOOP //////////
-int main(int argc, char *argv[])
+int start(int argc, char *argv[])
 {
     // VARIABLES
     int i;
